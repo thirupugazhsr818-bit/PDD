@@ -1,0 +1,19 @@
+# Node / Client
+client/node_modules/
+client/dist/
+client/.env
+client/.env.local
+
+# Python / Server
+server/__pycache__/
+server/*.pyc
+server/.venv/
+server/venv/
+server/env/
+.env
+
+# IDE / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
