@@ -8,7 +8,11 @@ from pymongo import MongoClient, DESCENDING, ASCENDING
 from bson import ObjectId
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+
+@app.route('/', methods=['GET'])
+def health_check():
+    return jsonify({'status': 'online', 'message': 'MoneyMate API Backend Service is Running'}), 200
 
 # ✅ Reads from MongoDB URI environment variable or defaults to MongoDB Atlas
 mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://yaduraj:yaduraj@cluster0.vsk89qe.mongodb.net/?appName=Cluster0')
