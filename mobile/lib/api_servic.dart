@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 // ─── Base URL ─────────────────────────────────────────────────────────────────
 class Url {
-  static const String base = 'https://web-production-2c31.up.railway.app';
+  static const String base = 'https://pdd-backend-4otv.onrender.com';
 }
 
 // ─── Response wrapper ─────────────────────────────────────────────────────────
