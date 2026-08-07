@@ -17,3 +17,4 @@ server/env/
 Thumbs.db
 .vscode/
 .idea/
+*.zip

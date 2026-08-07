@@ -15,7 +15,7 @@ def health_check():
     return jsonify({'status': 'online', 'message': 'MoneyMate API Backend Service is Running'}), 200
 
 # ✅ Reads from MongoDB URI environment variable or defaults to MongoDB Atlas
-mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://yaduraj:yaduraj@cluster0.vsk89qe.mongodb.net/?appName=Cluster0')
+mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://thirupugazhsr818_db_user:Flc5ob5L515xurCo@cluster0.gpemafb.mongodb.net/?appName=Cluster0')
 client = MongoClient(mongo_uri)
 db = client['moneymate']
 
