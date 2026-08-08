@@ -28,8 +28,17 @@ jobs:
       - name: Generate Android project structure if missing
         run: |
           cd mobile
-          if [ ! -d "android" ]; then
+          if [ ! -f "android/build.gradle" ]; then
             flutter create --platforms=android --org=com.moneymate .
+          fi
+
+      - name: Ensure Internet permissions in AndroidManifest.xml
+        run: |
+          MANIFEST="mobile/android/app/src/main/AndroidManifest.xml"
+          if [ -f "$MANIFEST" ]; then
+            if ! grep -q "android.permission.INTERNET" "$MANIFEST"; then
+              sed -i '/<application/i \    <uses-permission android:name="android.permission.INTERNET"/>\n    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>' "$MANIFEST"
+            fi
           fi
 
       - name: Install dependencies

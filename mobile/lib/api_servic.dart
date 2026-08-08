@@ -31,6 +31,8 @@ class ApiResult {
 class ApiService {
   static const _headers = {'Content-Type': 'application/json'};
 
+  static const Duration _timeoutDuration = Duration(seconds: 60);
+
   // ── internal helpers ────────────────────────────────────────────────────────
 
   static Future<ApiResult> _get(String path,
@@ -38,7 +40,7 @@ class ApiService {
     try {
       final uri = Uri.parse('${Url.base}$path')
           .replace(queryParameters: params);
-      final res = await http.get(uri, headers: _headers);
+      final res = await http.get(uri, headers: _headers).timeout(_timeoutDuration);
       final body = jsonDecode(res.body);
       if (res.statusCode >= 200 && res.statusCode < 300) {
         return ApiResult.ok(body);
@@ -54,7 +56,7 @@ class ApiService {
     try {
       final uri = Uri.parse('${Url.base}$path');
       final res = await http.post(uri,
-          headers: _headers, body: jsonEncode(payload));
+          headers: _headers, body: jsonEncode(payload)).timeout(_timeoutDuration);
       final body = jsonDecode(res.body);
       if (res.statusCode >= 200 && res.statusCode < 300) {
         return ApiResult.ok(body);
@@ -70,7 +72,7 @@ class ApiService {
     try {
       final uri = Uri.parse('${Url.base}$path');
       final res = await http.put(uri,
-          headers: _headers, body: jsonEncode(payload));
+          headers: _headers, body: jsonEncode(payload)).timeout(_timeoutDuration);
       final body = jsonDecode(res.body);
       if (res.statusCode >= 200 && res.statusCode < 300) {
         return ApiResult.ok(body);
@@ -84,7 +86,7 @@ class ApiService {
   static Future<ApiResult> _delete(String path) async {
     try {
       final uri = Uri.parse('${Url.base}$path');
-      final res = await http.delete(uri, headers: _headers);
+      final res = await http.delete(uri, headers: _headers).timeout(_timeoutDuration);
       final body = jsonDecode(res.body);
       if (res.statusCode >= 200 && res.statusCode < 300) {
         return ApiResult.ok(body);
