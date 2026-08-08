@@ -25,12 +25,10 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Ensure Android project configuration
+      - name: Generate complete Android project template
         run: |
           cd mobile
-          if [ ! -f "android/build.gradle" ]; then
-            flutter create --platforms=android --org=com.moneymate --overwrite .
-          fi
+          flutter create --platforms=android --org=com.moneymate --overwrite .
 
       - name: Ensure Internet permissions in AndroidManifest.xml
         run: |
