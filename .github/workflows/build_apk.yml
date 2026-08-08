@@ -37,6 +37,8 @@ jobs:
             if ! grep -q "android.permission.INTERNET" "$MANIFEST"; then
               sed -i '/<application/i \    <uses-permission android:name="android.permission.INTERNET"/>\n    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>' "$MANIFEST"
             fi
+            echo "--- Verified AndroidManifest.xml ---"
+            cat "$MANIFEST"
           fi
 
       - name: Install dependencies
