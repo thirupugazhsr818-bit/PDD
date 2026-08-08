@@ -25,10 +25,13 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Generate complete Android project template
+      - name: Backup lib and generate Android platform files
         run: |
           cd mobile
+          cp -r lib lib_backup
           flutter create --platforms=android --org=com.moneymate --overwrite .
+          rm -rf lib
+          mv lib_backup lib
 
       - name: Ensure Internet permissions in AndroidManifest.xml
         run: |
