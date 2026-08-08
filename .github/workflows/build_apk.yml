@@ -25,16 +25,6 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Backup lib & pubspec and generate Android platform files
-        run: |
-          cd mobile
-          cp -r lib lib_backup
-          cp pubspec.yaml pubspec.yaml.bak
-          flutter create --platforms=android --org=com.moneymate --overwrite .
-          rm -rf lib
-          mv lib_backup lib
-          mv pubspec.yaml.bak pubspec.yaml
-
       - name: Ensure Internet permissions in AndroidManifest.xml
         run: |
           MANIFEST="mobile/android/app/src/main/AndroidManifest.xml"
