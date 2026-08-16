@@ -1,0 +1,13 @@
+{
+  "name": "moneymate-appium-tests",
+  "version": "1.0.0",
+  "description": "Appium E2E testing for MoneyMate mobile application screens",
+  "main": "run-appium-tests.js",
+  "scripts": {
+    "test": "node run-appium-tests.js"
+  },
+  "dependencies": {
+    "webdriverio": "^8.39.0",
+    "xlsx": "^0.18.5"
+  }
+}

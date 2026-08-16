@@ -1,5 +1,6 @@
 # Node / Client
 client/node_modules/
+client/appium-tests/node_modules/
 client/dist/
 client/.env
 client/.env.local
@@ -18,3 +19,4 @@ Thumbs.db
 .vscode/
 .idea/
 *.zip
+backend_server.log
